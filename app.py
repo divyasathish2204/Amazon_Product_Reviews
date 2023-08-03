@@ -56,13 +56,13 @@ def getreviews(html_data):
         try:
             stars = box.select_one('[data-hook="review-star-rating"]').text.strip().split(' out')[0]
         except Exception as e:
-            logging.INFO(e)
+            logging.info(e)
             stars = 'N/A'   
 
         try:
             title = box.select_one('[data-hook="review-title"]').text.strip()
         except Exception as e:
-            logging.INFO(e)
+            logging.info(e)
             title = 'N/A'
 
         try:
@@ -70,13 +70,13 @@ def getreviews(html_data):
             datetime_str = box.select_one('[data-hook="review-date"]').text.strip().split(' on ')[-1]
             date = datetime.strptime(datetime_str, '%B %d, %Y').strftime("%d/%m/%Y")
         except Exception as e:
-            logging.INFO(e)
+            logging.info(e)
             date = 'N/A'
 
         try:
             description = box.select_one('[data-hook="review-body"]').text.strip()
         except Exception as e:
-            logging.INFO(e)
+            logging.info(e)
             description = 'N/A'
             #create dictionary with all review data
             data_dict = {
